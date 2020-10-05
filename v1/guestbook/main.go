@@ -156,6 +156,10 @@ func HelloHandler(rw http.ResponseWriter, req *http.Request) {
 		")\n"))
 }
 
+func RegionHandler(rw http.ResponseWriter, req *http.Request) {
+	rw.Write([]byte("Region: " + os.Getenv("REGION") + "\n"))
+}
+
 // Support multiple URL schemes for different use cases
 func findRedisURL() string {
 	host := os.Getenv("REDIS_MASTER_SERVICE_HOST")
@@ -187,8 +191,9 @@ func main() {
 	r.Path("/info").Methods("GET").HandlerFunc(InfoHandler)
 	r.Path("/env").Methods("GET").HandlerFunc(EnvHandler)
 	r.Path("/hello").Methods("GET").HandlerFunc(HelloHandler)
+	r.Path("/region").Methods("GET").HandlerFunc(RegionHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(r)
-	n.Run(":3000")
+	n.Run(":80")
 }

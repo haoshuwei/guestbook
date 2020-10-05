@@ -181,6 +181,10 @@ func HealthzHandler(rw http.ResponseWriter, req *http.Request) {
 	}
 }
 
+func RegionHandler(rw http.ResponseWriter, req *http.Request) {
+	rw.Write([]byte("Region: " + os.Getenv("REGION") + "\n"))
+}
+
 // Note: This function will not work until we hook-up the Tone Analyzer service
 func getPrimaryTone(value string, headers http.Header) (tone string) {
 	u := Input{InputText: value}
@@ -286,8 +290,9 @@ func main() {
 	r.Path("/env").Methods("GET").HandlerFunc(EnvHandler)
 	r.Path("/hello").Methods("GET").HandlerFunc(HelloHandler)
 	r.Path("/healthz").Methods("GET").HandlerFunc(HealthzHandler)
+	r.Path("/region").Methods("GET").HandlerFunc(RegionHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(r)
-	n.Run(":3000")
+	n.Run(":80")
 }
