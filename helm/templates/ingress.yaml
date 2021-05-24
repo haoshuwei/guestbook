@@ -1,4 +1,4 @@
-{{ if .Values.frontend.ingress.enabled }}
+{{- if .Values.frontend.ingress.enabled -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -14,3 +14,4 @@ spec:
             backend:
               serviceName: guestbook
               servicePort: 80
+  {{- end }}
