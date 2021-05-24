@@ -7,6 +7,7 @@ frontend:
 
   envVars:
     REGION: "cn-beijing"
+    REDIS_HOST: "redis-master"
 
   service:
     type: ClusterIP
