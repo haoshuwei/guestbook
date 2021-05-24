@@ -12,6 +12,6 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: guestbook
+              serviceName: frontend
               servicePort: 80
   {{- end }}
