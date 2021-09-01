@@ -3,7 +3,7 @@ frontend:
 
   image:
     repository: registry-vpc.cn-hongkong.aliyuncs.com/haoshuwei24/guestbook
-    tag: "v1"
+    tag: "v2"
 
   envVars:
     REGION: "cn-hongkong"
