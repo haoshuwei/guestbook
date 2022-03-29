@@ -1,0 +1,8 @@
+helm:
+  parameters:
+  - name: frontend.image.repository
+    value: registry.cn-hangzhou.aliyuncs.com/haoshuwei24/guestbook
+    forcestring: true
+  - name: frontend.image.tag
+    value: v4
+    forcestring: true
